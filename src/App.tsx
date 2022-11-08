@@ -1,8 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Grid, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Grid, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { useSelector } from 'react-redux';
 import { controller } from './Others/StatesController';
+import SvgIconRenderer from './Components/SvgIconRenderer';
+import { IconPaths } from './Others/IconPaths';
+import FullWidthPaper from './Components/FullWidthPaper';
+import AddDialog from './Dialogs/AddDialog';
 
 interface Props {
 
@@ -25,13 +29,34 @@ const App: React.FC<Props> = (props) => {
 
   return (
     <Grid container direction='column'>
-      <AppBar>
+      <AppBar position='sticky'>
         <Toolbar>
-          <Typography>ReadmeGen</Typography>
+          <Typography variant='body1' style={{ flex: 1 }}>ReadmeGen</Typography>
+
+          <IconButton>
+            <SvgIconRenderer path={IconPaths.history} />
+          </IconButton>
+          <IconButton>
+            <SvgIconRenderer path={IconPaths.plus} />
+          </IconButton>
         </Toolbar>
       </AppBar>
 
-      
+      <AddDialog />
+
+      <Grid container direction='row'>
+        <Grid container item xs style={{ paddingLeft: 16, paddingRight: 8, paddingTop: 16, paddingBottom: 16 }}>
+          <FullWidthPaper>
+            HELLO
+          </FullWidthPaper>
+        </Grid>
+
+        <Grid container item xs style={{ paddingLeft: 8, paddingRight: 16, paddingTop: 16, paddingBottom: 16 }}>
+          <FullWidthPaper>
+            HELLO
+          </FullWidthPaper>
+        </Grid>
+      </Grid>
 
     </Grid>
   )
