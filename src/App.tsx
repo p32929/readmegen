@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Grid, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Grid, IconButton, Toolbar, Tooltip, Typography } from "@material-ui/core";
 import { useSelector } from 'react-redux';
 import { controller } from './Others/StatesController';
 import SvgIconRenderer from './Components/SvgIconRenderer';
@@ -24,6 +24,24 @@ const App: React.FC<Props> = (props) => {
   // Funcs
 
   // Vars
+  const iconButtons = [
+    {
+      icon: IconPaths.history,
+      tooltip: "History",
+      onClick: () => {
+        
+      }
+    },
+    {
+      icon: IconPaths.plus,
+      tooltip: "Add",
+      onClick: () => {
+        controller.setState({
+          isAdderDialogShowing: true
+        })
+      }
+    }
+  ]
 
   // JSX
 
@@ -33,12 +51,16 @@ const App: React.FC<Props> = (props) => {
         <Toolbar>
           <Typography variant='body1' style={{ flex: 1 }}>ReadmeGen</Typography>
 
-          <IconButton>
-            <SvgIconRenderer path={IconPaths.history} />
-          </IconButton>
-          <IconButton>
-            <SvgIconRenderer path={IconPaths.plus} />
-          </IconButton>
+          {
+            iconButtons.map((item, index) => {
+              return <Tooltip arrow title={item.tooltip}>
+                <IconButton onClick={item.onClick}>
+                  <SvgIconRenderer path={item.icon} />
+                </IconButton>
+              </Tooltip>
+            })
+          }
+
         </Toolbar>
       </AppBar>
 

@@ -23,7 +23,11 @@ const AddDialog: React.FC<Props> = (props) => {
     ]
 
     return (
-        <Dialog open={false} fullWidth>
+        <Dialog open={states.isAdderDialogShowing} fullWidth onClose={() => {
+            controller.setState({
+                isAdderDialogShowing: false
+            })
+        }}>
             <DialogTitle>Add readme element</DialogTitle>
             <DialogContent>
                 <List>
