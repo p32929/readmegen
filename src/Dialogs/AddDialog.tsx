@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Dialog, DialogContent, DialogTitle, Grid, List, ListItem, ListItemText } from "@material-ui/core";
 import { useSelector } from 'react-redux';
 import { controller } from '../Others/StatesController';
+import TitleDescriptions from '../Forms/TitleDescriptions';
 
 interface Props {
 
@@ -32,8 +33,10 @@ const AddDialog: React.FC<Props> = (props) => {
             <DialogContent>
                 <List>
                     {
-                        elementTypes.map((item) => {
-                            return <ListItem button>
+                        elementTypes.map((item, index) => {
+                            return <ListItem button onClick={() => {
+                                
+                            }}>
                                 <ListItemText primary={item} />
                             </ListItem>
                         })
