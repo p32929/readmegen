@@ -1,8 +1,15 @@
 import { state, action, createStore } from 'usm-redux';
 import { compose } from 'redux';
+import { IElementTypes } from './GlobalVars';
+
+export interface IElement {
+    name: IElementTypes,
+    data: any
+}
 
 export interface IState {
-    isAdderDialogShowing: boolean
+    isAdderDialogShowing: boolean,
+    elements: Array<IElement>
 }
 
 const composeEnhancers =
@@ -18,6 +25,15 @@ export class Controller {
     @state
     states: IState = {
         isAdderDialogShowing: false,
+        elements: [
+            {
+                name: "Title and Descriptions",
+                data: {
+                    "title": "Hello world",
+                    "descriptions": "great descriptions"
+                }
+            }
+        ]
     }
 
     @action
@@ -26,6 +42,14 @@ export class Controller {
             ...this.states,
             ...newState
         }
+    }
+
+    @action
+    addElement(elementName: IElementTypes) {
+        this.states.elements.push({
+            name: elementName,
+            data: {}
+        })
     }
 }
 

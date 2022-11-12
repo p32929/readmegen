@@ -7,6 +7,9 @@ import SvgIconRenderer from './Components/SvgIconRenderer';
 import { IconPaths } from './Others/IconPaths';
 import FullWidthPaper from './Components/FullWidthPaper';
 import AddDialog from './Dialogs/AddDialog';
+import { IElementTypes } from './Others/GlobalVars';
+import TitleDescriptions from './Forms/TitleDescriptions';
+import Outputs from './Components/Outputs';
 
 interface Props {
 
@@ -29,7 +32,7 @@ const App: React.FC<Props> = (props) => {
       icon: IconPaths.history,
       tooltip: "History",
       onClick: () => {
-        
+
       }
     },
     {
@@ -43,7 +46,22 @@ const App: React.FC<Props> = (props) => {
     }
   ]
 
-  // JSX
+  const getDividedContentStyle = (type: 'L' | 'R'): React.CSSProperties => {
+    const dividedContentStyle: React.CSSProperties = {
+      paddingLeft: 16,
+      paddingRight: 16,
+      paddingTop: 16,
+      paddingBottom: 16
+    }
+    if (type == "L") {
+      dividedContentStyle.paddingRight = 8
+    }
+    else {
+      dividedContentStyle.paddingLeft = 8
+    }
+
+    return dividedContentStyle
+  }
 
   return (
     <Grid container direction='column'>
@@ -67,16 +85,21 @@ const App: React.FC<Props> = (props) => {
       <AddDialog />
 
       <Grid container direction='row'>
-        <Grid container item xs style={{ paddingLeft: 16, paddingRight: 8, paddingTop: 16, paddingBottom: 16 }}>
-          <FullWidthPaper>
-            HELLO
-          </FullWidthPaper>
-        </Grid>
+        <Grid item xs={6} style={getDividedContentStyle("L")}>
+          {
+            states.elements.map((item, index) => {
+              if (item.name === 'Title and Descriptions') {
+                return <TitleDescriptions index={index} />
+              }
 
-        <Grid container item xs style={{ paddingLeft: 8, paddingRight: 16, paddingTop: 16, paddingBottom: 16 }}>
-          <FullWidthPaper>
-            HELLO
-          </FullWidthPaper>
+              else {
+                return "1"
+              }
+            })
+          }
+        </Grid>
+        <Grid item xs={6} style={getDividedContentStyle("R")}>
+          <Outputs />
         </Grid>
       </Grid>
 

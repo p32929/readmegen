@@ -21,7 +21,7 @@ const FullWidthPaper: React.FC<Props> = (props) => {
     // JSX
     return (
         <Grid container style={style}>
-            <Paper style={{ width: "100%", padding: innerPadding }}>
+            <Paper elevation={4} style={{ width: "100%", padding: innerPadding }}>
                 {
                     withoutInnerGrid === true ? children : <Grid container direction={direction} justifyContent={justifyContent}>
                         {children}

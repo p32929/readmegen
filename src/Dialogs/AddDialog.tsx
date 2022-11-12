@@ -4,6 +4,7 @@ import { Button, Dialog, DialogContent, DialogTitle, Grid, List, ListItem, ListI
 import { useSelector } from 'react-redux';
 import { controller } from '../Others/StatesController';
 import TitleDescriptions from '../Forms/TitleDescriptions';
+import { elementTypes } from '../Others/GlobalVars';
 
 interface Props {
 
@@ -18,11 +19,6 @@ const AddDialog: React.FC<Props> = (props) => {
     const states = useSelector(() => controller.states);
     const classes = useStyles();
 
-    const elementTypes = [
-        "Title and Descriptions",
-        "Image or Logo"
-    ]
-
     return (
         <Dialog open={states.isAdderDialogShowing} fullWidth onClose={() => {
             controller.setState({
@@ -35,7 +31,10 @@ const AddDialog: React.FC<Props> = (props) => {
                     {
                         elementTypes.map((item, index) => {
                             return <ListItem button onClick={() => {
-                                
+                                controller.addElement(item)
+                                controller.setState({
+                                    isAdderDialogShowing: false
+                                })
                             }}>
                                 <ListItemText primary={item} />
                             </ListItem>
