@@ -20,19 +20,28 @@ const Outputs: React.FC<Props> = (props) => {
     const classes = useStyles();
 
     const getTitleDescriptions = (elem: IElement) => {
-        return `## ${elem.data['title']}\n ${elem.data['descriptions']}`
+        let finalStr = ""
+        let title = ""
+        let descriptions = ""
+        if (elem.data['title']) {
+            title = `## ${elem.data['title']}`
+        }
+        if (elem.data['descriptions']) {
+            descriptions = `${elem.data['descriptions']}`
+        }
+        return `${title}\n${descriptions}`
     }
 
     const getMdTexts = () => {
-        let finalStr = ""
+        let finalStrs = []
         for (var i = 0; i < states.elements.length; i++) {
             switch (states.elements[i].name) {
                 case "Title and Descriptions":
-                    finalStr += getTitleDescriptions(states.elements[i])
+                    finalStrs.push(getTitleDescriptions(states.elements[i]))
             }
         }
 
-        return finalStr
+        return finalStrs.join("\n")
     }
 
     return (

@@ -26,13 +26,13 @@ export class Controller {
     states: IState = {
         isAdderDialogShowing: false,
         elements: [
-            {
-                name: "Title and Descriptions",
-                data: {
-                    "title": "Hello world",
-                    "descriptions": "great descriptions"
-                }
-            }
+            // {
+            //     name: "Title and Descriptions",
+            //     data: {
+            //         "title": "Hello world",
+            //         "descriptions": "great descriptions"
+            //     }
+            // }
         ]
     }
 
@@ -50,6 +50,11 @@ export class Controller {
             name: elementName,
             data: {}
         })
+    }
+
+    @action
+    setElementValue(index: number, key: string, value: string) {
+        this.states.elements[index].data[key] = value
     }
 }
 

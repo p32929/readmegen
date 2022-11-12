@@ -18,7 +18,7 @@ const CustomTextfield: React.FC<TextFieldProps> = (props) => {
     const classes = useStyles();
 
     return (
-        <TextField style={{ marginTop: 12 }} variant='outlined' {...props} />
+        <TextField style={{ marginTop: 12 }} variant='outlined' {...props} name={props.label?.toString().replaceAll(" ", "_").toLocaleLowerCase()} />
     )
 
 }

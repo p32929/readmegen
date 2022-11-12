@@ -18,13 +18,19 @@ const TitleDescriptions: React.FC<Props> = (props) => {
     // Hooks
     const states = useSelector(() => controller.states);
     const classes = useStyles();
+    type OnChangeType = React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+
+    const onChange: OnChangeType = (e) => {
+        // console.log(e.target.name)
+        controller.setElementValue(props.index, e.target.name, e.target.value)
+    }
 
     return (
         <FullWidthPaper direction='column'>
             <Typography variant='h6'>{states.elements[props.index].name}</Typography>
 
-            <CustomTextfield label="Title" />
-            <CustomTextfield label="Descriptions" />
+            <CustomTextfield onChange={onChange} label="Title" />
+            <CustomTextfield onChange={onChange} label="Descriptions" />
         </FullWidthPaper>
     )
 
