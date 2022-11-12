@@ -48,24 +48,25 @@ const App: React.FC<Props> = (props) => {
   ]
 
   const getDividedContentStyle = (type: 'L' | 'R'): React.CSSProperties => {
-    const dividedContentStyle: React.CSSProperties = {
+    const dividedContentStyle = {
       paddingLeft: 16,
       paddingRight: 16,
       paddingTop: 16,
       paddingBottom: 16,
-      width: '49%',
-      maxWidth: '49%',
-      minWidth: '49%',
-      overflowX: 'hidden'
     }
-    if (type == "L") {
+    if (type === "L") {
       dividedContentStyle.paddingRight = 8
     }
     else {
       dividedContentStyle.paddingLeft = 8
     }
 
-    return dividedContentStyle
+    return {
+      ...dividedContentStyle,
+      width: (window.innerWidth / 2) - (dividedContentStyle.paddingLeft + dividedContentStyle.paddingRight),
+      maxWidth: (window.innerWidth / 2) - (dividedContentStyle.paddingLeft + dividedContentStyle.paddingRight),
+      minWidth: (window.innerWidth / 2) - (dividedContentStyle.paddingLeft + dividedContentStyle.paddingRight),
+    }
   }
 
   return (
