@@ -20,16 +20,22 @@ const Outputs: React.FC<Props> = (props) => {
     const classes = useStyles();
 
     const getTitleDescriptions = (elem: IElement) => {
-        let finalStr = ""
-        let title = ""
-        let descriptions = ""
+        let finalStrs = []
         if (elem.data['title']) {
-            title = `## ${elem.data['title']}`
+            finalStrs.push(`## ${elem.data['title']}`)
         }
         if (elem.data['descriptions']) {
-            descriptions = `${elem.data['descriptions']}`
+            finalStrs.push(`${elem.data['descriptions']}`)
         }
-        return `${title}\n${descriptions}`
+        return finalStrs.join("\n")
+    }
+
+    const getImageOrLogo = (elem: IElement) => {
+        let finalStrs = []
+        if (elem.data['image']) {
+            finalStrs.push(`![LOGO](${elem.data['image']})`)
+        }
+        return finalStrs.join("\n")
     }
 
     const getMdTexts = () => {
@@ -38,6 +44,11 @@ const Outputs: React.FC<Props> = (props) => {
             switch (states.elements[i].name) {
                 case "Title and Descriptions":
                     finalStrs.push(getTitleDescriptions(states.elements[i]))
+                    break
+
+                case 'Image or Logo':
+                    finalStrs.push(getImageOrLogo(states.elements[i]))
+                    break
             }
         }
 

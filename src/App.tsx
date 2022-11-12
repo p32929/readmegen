@@ -10,6 +10,7 @@ import AddDialog from './Dialogs/AddDialog';
 import { IElementTypes } from './Others/GlobalVars';
 import TitleDescriptions from './Forms/TitleDescriptions';
 import Outputs from './Components/Outputs';
+import ImageOrLogo from './Forms/ImageOrLogo';
 
 interface Props {
 
@@ -90,6 +91,9 @@ const App: React.FC<Props> = (props) => {
             states.elements.map((item, index) => {
               if (item.name === 'Title and Descriptions') {
                 return <TitleDescriptions index={index} />
+              }
+              else if (item.name === 'Image or Logo') {
+                return <ImageOrLogo index={index} />
               }
 
               else {

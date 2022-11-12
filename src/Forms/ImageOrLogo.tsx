@@ -1,17 +1,21 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, TextField, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { useSelector } from 'react-redux';
-import { controller } from '../Others/StatesController';
-import FullWidthPaper from '../Components/FullWidthPaper';
 import CustomTextfield from '../Components/CustomTextfield';
+import FullWidthPaper from '../Components/FullWidthPaper';
 import { IInputElemProps, OnChangeType } from '../Others/GlobalVars';
+import { controller } from '../Others/StatesController';
+
+interface Props {
+
+}
 
 const useStyles = makeStyles((theme) => ({
     // Define your styles here
 }));
 
-const TitleDescriptions: React.FC<IInputElemProps> = (props) => {
+const ImageOrLogo: React.FC<IInputElemProps> = (props) => {
     // Hooks
     const states = useSelector(() => controller.states);
     const classes = useStyles();
@@ -22,13 +26,11 @@ const TitleDescriptions: React.FC<IInputElemProps> = (props) => {
 
     return (
         <FullWidthPaper direction='column'>
-            <Typography variant='h6'>{states.elements[props.index].name}</Typography>
-
-            <CustomTextfield onChange={onChange} label="Title" />
-            <CustomTextfield onChange={onChange} label="Descriptions" />
+            <Typography variant='h6'>Enter an {states.elements[props.index].name} URL</Typography>
+            <CustomTextfield onChange={onChange} label="Image" />
         </FullWidthPaper>
     )
 
 }
 
-export default TitleDescriptions;
+export default ImageOrLogo;

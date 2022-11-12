@@ -4,3 +4,9 @@ export const elementTypes = [
 ] as const
 
 export type IElementTypes = typeof elementTypes[number]
+
+export type OnChangeType = React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+
+export interface IInputElemProps {
+    index: number,
+}
