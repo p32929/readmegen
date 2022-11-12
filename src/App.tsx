@@ -107,7 +107,7 @@ const App: React.FC<Props> = (props) => {
             })
           }
         </Grid>
-        <Grid item xs={6} style={getDividedContentStyle("R")}>
+        <Grid id='outputdiv' item xs={6} style={getDividedContentStyle("R")}>
           <Outputs />
         </Grid>
       </Grid>

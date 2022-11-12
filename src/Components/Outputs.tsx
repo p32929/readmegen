@@ -19,6 +19,7 @@ const Outputs: React.FC<Props> = (props) => {
     // Hooks
     const states = useSelector(() => controller.states);
     const classes = useStyles();
+    const outputDivWidth = document.getElementById('outputdiv')?.style.width
 
     const getTitleDescriptions = (elem: IElement) => {
         let finalStrs = []
