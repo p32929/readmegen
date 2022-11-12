@@ -26,7 +26,7 @@ const Outputs: React.FC<Props> = (props) => {
 
     return (
         <FullWidthPaper direction='column'>
-            Outputs
+            
         </FullWidthPaper>
     )
 
