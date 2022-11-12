@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import FullWidthPaper from './FullWidthPaper';
 import { controller, IElement } from '../Others/StatesController';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
 
 interface Props {
 
@@ -34,6 +35,9 @@ const Outputs: React.FC<Props> = (props) => {
         let finalStrs = []
         if (elem.data['image']) {
             finalStrs.push(`![LOGO](${elem.data['image']})`)
+            // finalStrs.push(`
+            // <img src="${elem.data['image']}"/>
+            // `)
         }
         return finalStrs.join("\n")
     }
@@ -56,12 +60,7 @@ const Outputs: React.FC<Props> = (props) => {
     }
 
     return (
-        <FullWidthPaper direction='column' style={{
-            marginBlockStart: "0px",
-            marginBlockEnd: "0px",
-            marginInlineStart: "0px",
-            marginInlineEnd: "0px"
-        }}>
+        <FullWidthPaper direction='column'>
             <ReactMarkdown className='idk'>{getMdTexts()}</ReactMarkdown>
         </FullWidthPaper>
     )

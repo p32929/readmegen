@@ -52,7 +52,11 @@ const App: React.FC<Props> = (props) => {
       paddingLeft: 16,
       paddingRight: 16,
       paddingTop: 16,
-      paddingBottom: 16
+      paddingBottom: 16,
+      width: '49%',
+      maxWidth: '49%',
+      minWidth: '49%',
+      overflowX: 'hidden'
     }
     if (type == "L") {
       dividedContentStyle.paddingRight = 8
