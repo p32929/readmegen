@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.idk>* {
+  margin-block-start: 4px;
+  margin-block-end: 4px;
+  margin-inline-start: 4px;
+  margin-inline-end: 4px;
+}
